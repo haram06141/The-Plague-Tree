@@ -892,7 +892,7 @@ addLayer("i", {
             description: "Cases increase 'Infection' base.",
             cost: new Decimal(5e3),
             effect(){
-            let i22 = player.points.add(1).max(1)
+            let i22 = player.points.add(1e43).max(1)
             i22 = Decimal.log10(i22).pow(0.2)
             if(hasIUpg(32)) i22 = i22.mul(getIUpgEff(32))
             return i22
@@ -909,7 +909,7 @@ addLayer("i", {
             description: "Multiplier to infectivity based on cases.",
             cost: new Decimal(25e3),
             effect(){
-            let i23 = player.points.add(10).max(10)
+            let i23 = player.points.add(1e40).max(10)
             i23 = Decimal.log10(i23).pow(0.3).mul(1.25)
             if (hasIUpg(33)) i23 = i23.pow(getIUpgEff(33))
             return i23
@@ -1072,14 +1072,14 @@ addLayer("r", {
     },
     milestones: {
         0: {
-            requirementDescription: "5 replicators",
+            requirementDescription: "1 replicators",
             effectDescription: "Keep virus upgrades on reset.",
-            done() { return player.r.points.gte(5) }
+            done() { return player.r.points.gte(1) }
         },
         1: {
-            requirementDescription: "12 replicators",
+            requirementDescription: "2 replicators",
             effectDescription: "You can buy max replicators.",
-            done() { return player.r.points.gte(12) }
+            done() { return player.r.points.gte(2) }
         },
     },
     upgrades: {
@@ -1090,7 +1090,7 @@ addLayer("r", {
             description: "Infectivity boosts replicators 1st effect base.",
             cost: decimalFour,
             effect(){
-            let r11 = player.i.points.add(10).max(10)
+            let r11 = player.i.points.add(1e40).max(10)
             r11 = Decimal.log10(r11).pow(1.2).add(1).max(1)
             if (inChallenge("u", 12)) r11 = decimalOne
             return r11
@@ -1140,7 +1140,7 @@ addLayer("r", {
             cost: new Decimal(12),
             effect(){
             let r21 = player.v.points.add(10).max(10)
-            r21 = Decimal.log10(r21).pow(0.35).add(1).max(1)
+            r21 = Decimal.log10(r21).pow(0.35).add(1).max(1).mul(1e40)
             return r21
             },
             effectDisplay(){
@@ -1377,30 +1377,30 @@ addLayer("u", {
     resetsNothing() { return hasMilestone("d", 5) },
     milestones: {
         0: {
-            requirementDescription: "2 uncoaters",
+            requirementDescription: "1 uncoaters",
             effectDescription: "Keep Infectivity/Replicator milestones on reset.",
-            done() { return player.u.points.gte(2) }
+            done() { return player.u.points.gte(1) }
         },
         2: {
-            requirementDescription: "3 uncoaters",
+            requirementDescription: "2 uncoaters",
             effectDescription: "Gain 100% of infectivity gain per second.",
-            done() { return player.u.points.gte(3) }
+            done() { return player.u.points.gte(2) }
         },
         3: {
-            requirementDescription: "6 uncoaters",
+            requirementDescription: "3 uncoaters",
             effectDescription: "Keep Infectivity/Replicator upgrades on reset.",
-            done() { return player.u.points.gte(6) }
+            done() { return player.u.points.gte(3) }
         },
         4: {
-            requirementDescription: "8 uncoaters",
+            requirementDescription: "4 uncoaters",
             effectDescription: "Autobuy replicators.",
             toggles: [["u", "auto"]],
-            done() { return player.u.points.gte(8) }
+            done() { return player.u.points.gte(4) }
         },
         5: {
-            requirementDescription: "10 uncoaters",
+            requirementDescription: "5 uncoaters",
             effectDescription: "Replicators reset nothing.",
-            done() { return player.u.points.gte(10) }
+            done() { return player.u.points.gte(5) }
         },
         6: {
             requirementDescription: "15 uncoaters",
@@ -1417,7 +1417,7 @@ addLayer("u", {
             cost: decimalTwo,
             effect(){
             let u11 = player.u.best.add(1).max(1)
-            u11 = u11.pow(4.5)
+            u11 = u11.pow(4.5).mul(1e40)
             if (inChallenge("u", 11) || inChallenge("s", 21)) u11 = decimalOne
             return u11
             },
@@ -1430,7 +1430,7 @@ addLayer("u", {
             description: "'Transmission' softcap starts later based on uncoaters and replicators.",
             cost: decimalThree,
             effect(){
-            let u12 = tmp.u.effect.pow(7.5)
+            let u12 = tmp.u.effect.pow(7.5).mul(1e40)
             let rep = player.r.points
             u12 = u12.pow(rep.div(10).add(1).max(1))
             if (inChallenge("u", 11) || inChallenge("u", 21) || inChallenge("s", 21)) u12 = decimalOne
