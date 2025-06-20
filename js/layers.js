@@ -500,7 +500,7 @@ addLayer("v", {
             description: "Multiply cases gain.",
             cost: decimalTwo,
             base() {
-                let base =  decimalTwo
+                let base =  new Decimal(1e10)
                 if(hasIUpg(21)) base = base.add(getIUpgEff(21))
                 if(hasIUpg(22)) base = base.add(getIUpgEff(22))
                 base = base.add(tmp.r.effect2)
