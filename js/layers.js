@@ -628,7 +628,7 @@ addLayer("v", {
             description: "Multiplier to VP based on cases.",
             cost: new Decimal(20),
             effect(){
-                let v22 = player.points.add(1).max(1)
+                let v22 = player.points.add(20).max(1)
                 v22 = Decimal.log10(v22).add(1).max(1)
                 if(hasVUpg(33)) v22 = v22.pow(getVUpgEff(33))
                 if(hasRUpg(31)) v22 = v22.pow(getRUpgEff(31))
@@ -817,7 +817,7 @@ addLayer("i", {
             description: "Infectivity boosts VP gain.",
             cost: decimalTen,
             effect(){
-            let i11 = player.i.points.add(1).max(1)
+            let i11 = player.i.points.add(1e20).max(1)
             if (inChallenge("u", 12)) i11 = decimalOne
             if (hasUpgrade("Uv",21)) i11 = i11.pow(tmp.Uv.upgrades[21].effect)
             return i11
@@ -857,7 +857,7 @@ addLayer("i", {
             description: "Multiplier to infectivity based on VP.",
             cost: new Decimal(50),
             effect(){
-            let i13 = player.v.points.add(10).max(10)
+            let i13 = player.v.points.add(1e20).max(10)
             i13 = Decimal.log10(i13).pow(0.4)
             if (hasIUpg(33)) i13 = i13.pow(getIUpgEff(33))
             return i13
@@ -874,7 +874,7 @@ addLayer("i", {
             description: "Infectivity increases 'Infection' base.",
             cost: new Decimal(500),
             effect(){
-            let i21 = player.i.points.add(1).max(1)
+            let i21 = player.i.points.add(1e30).max(1)
             i21 = Decimal.log10(i21).pow(0.5)
             if(hasIUpg(31)) i21 = i21.mul(getIUpgEff(31))
             if (inChallenge("u", 12)) i21 = decimalOne
