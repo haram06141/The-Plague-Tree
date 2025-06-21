@@ -910,7 +910,7 @@ addLayer("i", {
             cost: new Decimal(25e3),
             effect(){
             let i23 = player.points.add(1e40).max(10)
-            i23 = Decimal.log10(i23).pow(0.3).mul(1.25)
+            i23 = Decimal.log10(i23).pow(0.3).mul(1.25).mul(1e40)
             if (hasIUpg(33)) i23 = i23.pow(getIUpgEff(33))
             return i23
             },
@@ -1457,8 +1457,8 @@ addLayer("u", {
             effect(){
                 let u13 = player.u.points.add(1).max(1)
                 let u13b = player.r.points.add(1).max(1)
-                u13 = u13.pow(2.2)
-                u13b = u13b.pow(0.63)
+                u13 = u13.pow(2.2).mul(1e40)
+                u13b = u13b.pow(0.63).mul(1e40)
                 if (hasMilestone("Ui", 5)) {
                     u13 = u13.pow(10)
                     u13b = powExp(u13b.pow(5),3)
@@ -1479,7 +1479,7 @@ addLayer("u", {
             description: "Cases make replicators cheaper.",
             cost: new Decimal(6),
             effect(){
-            let u14 = player.points.add(1).max(1)
+            let u14 = player.points.add(1).max(1).mul(1e40)
             u14 = Decimal.log10(u14).pow(0.83)
             u14 = Decimal.pow(10,u14).pow(1.536)
             if (hasUpgrade("Ui", 11)) u14 = u14.pow(2)
@@ -1990,14 +1990,14 @@ addLayer("s", {
     canBuyMax() {return hasMilestone("f",12)},
     milestones: {
         0: {
-            requirementDescription: "2 symptoms",
+            requirementDescription: "1 symptoms",
             effectDescription: "Keep Infectivity/Replicator milestones on reset.",
-            done() { return player.s.points.gte(2) }
+            done() { return player.s.points.gte(1) }
         },
         1: {
-            requirementDescription: "3 symptoms",
+            requirementDescription: "2 symptoms",
             effectDescription: "Keep Infectivity/Replicator upgrades on reset.",
-            done() { return player.s.points.gte(3) }
+            done() { return player.s.points.gte(2) }
         },
         2: {
             requirementDescription: "4 symptoms",
@@ -2005,9 +2005,9 @@ addLayer("s", {
             done() { return player.s.points.gte(4) }
         },
         3: {
-            requirementDescription: "10 symptoms",
+            requirementDescription: "5 symptoms",
             effectDescription: "Unlock 2 more buyables.",
-            done() { return player.s.points.gte(10) }
+            done() { return player.s.points.gte(5) }
         },
     },
     buyables: {
@@ -2652,7 +2652,7 @@ addLayer("s", {
             s14 = s14.pow(new Decimal(3e-4))
             if (s14.gte(Decimal.pow(10,5000))) s14 = s14.div(Decimal.pow(10,5000)).pow(0.1).mul(Decimal.pow(10,5000))
             if (inChallenge("s", 21)) s14 = decimalOne
-            return s14
+            return s14.mul(1e40)
             },
             effectDisplay(){
                 let dis = format(getSUpgEff(14))+"x"
