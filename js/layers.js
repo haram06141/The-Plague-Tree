@@ -26947,7 +26947,7 @@ addLayer("e", {
             cost: Decimal.pow(10,6185e9),
             effect(){
                 let Momo = player.e.points.add(1).pow(0.15)
-                return Momo
+                return Momo.mul(1e40)
             },
             effect2(){
                 let Sana = player.e.points.max(10).log10().pow(0.0964)
