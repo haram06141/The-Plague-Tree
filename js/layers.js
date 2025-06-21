@@ -28461,7 +28461,7 @@ addLayer("ct", {
         return player.e.mu.gte(1800) && player.e.crna.gte(6.25e26)
     },
     effect() {
-        let eff = powExp(player.ct.best.add(1).mul(10),3).div(10).tetrate(1.1).pow(1.5)
+        let eff = powExp(player.ct.best.add(1e40).mul(10),3).div(10).tetrate(1.1).pow(1.5)
         if (eff.gte(1e50)) eff = eff.log10().mul(2).pow(25)
         if (eff.gte(1e100)) eff = eff.log10().div(100).pow(0.5).mul(100).pow10()
         if (eff.gte(Decimal.pow(10,3e6))) eff.log10().div(3e6).pow(0.5).mul(3e6).pow10()
