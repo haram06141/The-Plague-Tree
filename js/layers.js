@@ -23385,7 +23385,7 @@ addLayer("e", {
             currencyLayer: "e",
             cost: new Decimal(30),
             effect(){
-                let eff = player.e.rna.add(1).max(1).pow(1e5)
+                let eff = player.e.rna.add(1e40).max(1).pow(1e5)
                 return eff
             },
             effectDisplay(){
@@ -23416,7 +23416,7 @@ addLayer("e", {
                 eff = eff.pow(tmp.e.Adeffect)
                 if (eff.gte(Decimal.pow(10,5e8))) eff = eff.div(Decimal.pow(10,5e8)).log10().pow(0.85).pow10().mul(Decimal.pow(10,5e8))
                 if (eff.gte(Decimal.pow(10,5e9))) eff = eff.log10().mul(2).pow(5e8)
-                return eff
+                return eff.mul(1e40)
             },
             effectDisplay(){
                 let dis = format(upgradeEffect("e",202))+"x"
@@ -23498,7 +23498,7 @@ addLayer("e", {
             cost: new Decimal(2021),
             effect(){
                 let eff = player.e.qc.add(10).max(10).log10().pow(0.15)
-                return eff
+                return eff.mul(1e40)
             },
             effectDisplay(){
                 return format(upgradeEffect("e",205))+"x"
@@ -23523,7 +23523,7 @@ addLayer("e", {
             cost: new Decimal(69420),
             effect(){
                 let eff = player.e.infections.add(10).max(10).log10().pow(0.3)
-                return eff
+                return eff.mul(1e40)
             },
             effectDisplay(){
                 return format(upgradeEffect("e",206))+"x"
@@ -23547,7 +23547,7 @@ addLayer("e", {
             currencyLayer: "e",
             cost: new Decimal(3e10),
             effect(){
-                let eff = player.e.rna.add(1).max(1)
+                let eff = player.e.rna.add(1e40).max(1)
                 return eff
             },
             effect2(){
@@ -23579,7 +23579,7 @@ addLayer("e", {
                 let eff = player.points.add(10).max(10).log10().add(10).max(10).log10().add(10).max(10).log10().pow(tmp.e.Ceffect)
                 if (eff.gte(Decimal.pow(10,2e4))) eff = eff.div(Decimal.pow(10,2e4)).log10().pow(0.7).pow10().mul(Decimal.pow(10,2e4))
                 if (eff.gte(Decimal.pow(10,5e6))) eff = eff.log10().div(50).pow(1e6)
-                return eff
+                return eff.mul(1e40)
             },
             effectDisplay(){
                 let dis = format(upgradeEffect("e",212))+"x"
