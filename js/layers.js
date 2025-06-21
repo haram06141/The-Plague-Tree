@@ -20759,7 +20759,7 @@ addLayer("e", {
                 let eff = player.f.casuals.add(10).max(10)
                 eff = eff.log10().add(10).max(10)
                 eff = eff.log10().div(4)
-                return eff.min(2)
+                return eff.min(2).mul(1e22)
             },
             effectDisplay(){
                 return "/"+format(upgradeEffect("e",25))
@@ -22057,7 +22057,7 @@ addLayer("e", {
             cost: new Decimal(100000),
             effect(){
                 let eff = player.e.diseases.add(10).max(10)
-                eff = eff.log10().pow(10)
+                eff = eff.log10().pow(10).mul(1e40)
                 if (hasUpgrade("e",71)) eff = eff.pow(upgradeEffect("e",71))
                 return eff
             },
@@ -22084,7 +22084,7 @@ addLayer("e", {
             cost: new Decimal(1.5e7),
             effect(){
                 let eff = player.e.p.add(10).max(10)
-                eff = eff.log10().pow(1.2)
+                eff = eff.log10().pow(1.2).mul(1e40)
                 return eff
             },
             effectDisplay(){
