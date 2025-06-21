@@ -21574,7 +21574,7 @@ addLayer("e", {
             cost: new Decimal(1e4),
             effect(){
                 let eff = player.e.diseases.add(10).max(10)
-                eff = eff.log10().pow(0.15)
+                eff = eff.log10().pow(0.15).mul(1e40)
                 return eff
             },
             effectDisplay(){
@@ -21599,7 +21599,7 @@ addLayer("e", {
             currencyLayer: "e",
             cost: new Decimal(3e5),
             effect(){
-                let eff = player.e.qt.add(1).max(1).pow(0.15)
+                let eff = player.e.qt.add(1).max(1).pow(0.15).mul(1e40)
                 if (eff.gte("e1300")) eff = eff.div("e1300").log10().pow(0.5).pow10().mul("e1300")
                 return eff
             },
@@ -21625,7 +21625,7 @@ addLayer("e", {
             currencyLayer: "e",
             cost: new Decimal(44444444),
             effect(){
-                let eff = player.e.qc.add(1).max(1).pow(5000)
+                let eff = player.e.qc.add(1e40).max(1).pow(5000)
                 return eff
             },
             effectDisplay(){
@@ -21650,7 +21650,7 @@ addLayer("e", {
             currencyLayer: "e",
             cost: new Decimal(333333333),
             effect(){
-                let eff = player.e.infections.add(1).max(1).pow(0.2)
+                let eff = player.e.infections.add(1).max(1).pow(0.2).mul(1e40)
                 return eff
             },
             effectDisplay(){
@@ -21675,7 +21675,7 @@ addLayer("e", {
             currencyLayer: "e",
             cost: new Decimal(5e15),
             effect(){
-                let eff = player.e.qc.add(1).max(1).pow(2000)
+                let eff = player.e.qc.add(1e40).max(1).pow(2000)
                 return eff
             },
             effectDisplay(){
