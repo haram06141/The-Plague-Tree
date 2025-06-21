@@ -21728,7 +21728,7 @@ addLayer("e", {
             effect(){
                 let eff = player.points.add(10).max(10)
                 eff = eff.log10().add(10).max(10)
-                eff = eff.log10().pow(0.1)
+                eff = eff.log10().pow(0.1).mul(1e40)
                 return eff
             },
             effectDisplay(){
@@ -21838,7 +21838,7 @@ addLayer("e", {
                 let eff = Decimal.pow(10,player.e.qc.add(10).max(10).log10().pow(2/3))
                 if (eff.gte("e5000")) eff = eff.div("e5000").log10().pow(0.7).pow10().mul("e5000")
                 if (eff.gte("e15000")) eff = eff.div("e15000").log10().pow(0.7).pow10().mul("e15000")
-                return eff
+                return eff.mul(1e40)
             },
             effectDisplay(){
                 return "/"+format(upgradeEffect("e",95))
@@ -22827,7 +22827,7 @@ addLayer("e", {
             currencyLayer: "e",
             cost: new Decimal("1.662e1662"),
             effect(){
-                let eff = player.e.qc.add(10).max(10).log10()
+                let eff = player.e.qc.add(10).max(10).log10().pow(5)
                 return eff
             },
             effectDisplay(){
@@ -22953,7 +22953,7 @@ addLayer("e", {
             cost: new Decimal("e25095"),
             effect(){
                 let eff = player.f.points.add(10).max(10).log10().pow(0.5)
-                return eff
+                return eff.mul(1e40)
             },
             effectDisplay(){
                 return format(upgradeEffect("e",172))+"x"
