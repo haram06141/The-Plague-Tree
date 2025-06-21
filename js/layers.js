@@ -14393,7 +14393,7 @@ addLayer("f", {
             currencyInternalName: "virus",
             currencyLayer: "f",
             effect() {
-                let eff = player.f.virus.add(10).max(10)
+                let eff = player.f.virus.add(10).max(10).mul(1e40)
                 eff = eff.log10().pow(0.2).div(15)
                 return eff
             },
@@ -14450,7 +14450,7 @@ addLayer("f", {
             currencyInternalName: "virus",
             currencyLayer: "f",
             effect() {
-                let eff = player.f.virus.add(1).max(1)
+                let eff = player.f.virus.add(1).max(1).mul(1e40)
                 eff = eff.pow(17)
                 return eff
             },
@@ -14512,7 +14512,7 @@ addLayer("f", {
                 if (eff.gte(Decimal.pow(10,1.5e15))) eff = Decimal.pow(10,eff.div(Decimal.pow(10,1.5e15)).log10().pow(0.82)).mul(Decimal.pow(10,1.5e15))
                 if (eff.gte(Decimal.pow(10,1.8e18))) eff = Decimal.pow(10,eff.div(Decimal.pow(10,1.8e18)).log10().pow(0.78)).mul(Decimal.pow(10,1.8e18))
                 if (eff.gte(Decimal.pow(10,1e20))) eff = eff.log10().pow(5e18)
-                return eff
+                return eff.mul(1e40)
             },
             effectDisplay() {
                 let dis = format(getFUpgEff(155))+"x"
@@ -14579,7 +14579,7 @@ addLayer("f", {
                 eff = eff.log10().pow(4)
                 eff = eff.pow(tmp.f.buyables[103].effect)
                 if (eff.gte(Decimal.pow(10,Decimal.pow(10,1e46)))) eff = eff.log10().log10().mul(1e4).pow(2e44).pow10()
-                return eff.max(1)
+                return eff.max(1).mul(1e40)
             },
             effectDisplay() {
                 return format(tmp.f.upgrades[157].effect)+"x, ^"+format(tmp.f.upgrades[157].effect2)
@@ -14634,7 +14634,7 @@ addLayer("f", {
             currencyLayer: "f",
             effect() {
                 let eff = player.f.points.add(10).max(10)
-                eff = eff.log10().pow(0.6)
+                eff = eff.log10().pow(0.6).mul(1e40)
                 return eff.max(1)
             },
             effectDisplay() {
