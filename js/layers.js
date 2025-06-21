@@ -13542,7 +13542,7 @@ addLayer("f", {
             currencyInternalName: "casualty",
             currencyLayer: "f",
             effect() {
-                let eff = player.f.casualtyTotal.add(1).max(1)
+                let eff = player.f.casualtyTotal.add(1).max(1).mul(1e20)
                 eff = eff.pow(15)
                 return eff.min(Decimal.pow(10,1e25))
             },
@@ -13706,7 +13706,7 @@ addLayer("f", {
             currencyInternalName: "casualty",
             currencyLayer: "f",
             effect() {
-                let eff = player.f.casualty.add(1).max(1)
+                let eff = player.f.casualty.add(1e40).max(1)
                 eff = eff.pow(20)
                 return eff.min(Decimal.pow(10,1e25))
             },
@@ -13728,13 +13728,13 @@ addLayer("f", {
         },
         113: {
             title: "Casualty Auto Gain",
-            description: "Gain 50% of best casualty/min.",
+            description: "Gain 1e22 of best casualty/min.",
             cost: new Decimal(15),
             currencyDisplayName: "casualty",
             currencyInternalName: "casualty",
             currencyLayer: "f",
             effect() {
-                let eff = player.f.cpm.mul(0.5)
+                let eff = player.f.cpm.mul(1e20)
                 return eff
             },
             effectDisplay() {
@@ -13784,7 +13784,7 @@ addLayer("f", {
             currencyLayer: "f",
             effect() {
                 let eff = player.f.p.add(10).max(10)
-                eff = eff.log10().pow(0.2)
+                eff = eff.log10().pow(0.2).mul(1e20)
                 return eff
             },
             effectDisplay() {
@@ -13840,7 +13840,7 @@ addLayer("f", {
             currencyLayer: "f",
             effect() {
                 let eff = player.s.severity.add(10).max(10)
-                eff = eff.log10().pow(0.1)
+                eff = eff.log10().pow(0.1).mul(1e30)
                 return eff
             },
             effectDisplay() {
@@ -13868,7 +13868,7 @@ addLayer("f", {
             currencyLayer: "f",
             effect() {
                 let eff = player.d.points.add(10).max(10)
-                eff = eff.log10().pow(0.15)
+                eff = eff.log10().pow(0.15).mul(1e20)
                 return eff
             },
             effectDisplay() {
