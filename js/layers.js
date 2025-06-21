@@ -9696,19 +9696,19 @@ addLayer("f", {
             done() { return player.f.total.gte(3) }
         },
         3: {
-            requirementDescription() { return "10 total fatality" },
+            requirementDescription() { return "4 total fatality" },
             effectDescription() { return "Keep previous upgrades on reset." },
-            done() { return player.f.total.gte(10) }
+            done() { return player.f.total.gte(4) }
         },
         4: {
-            requirementDescription() { return "25 total fatality" },
+            requirementDescription() { return "5 total fatality" },
             effectDescription() { return "Keep symptom challenges on reset." },
-            done() { return player.f.total.gte(25) }
+            done() { return player.f.total.gte(5) }
         },
         5: {
-            requirementDescription() { return "3,000,000 total fatality" },
+            requirementDescription() { return "3,000 total fatality" },
             effectDescription() { return "Unlock death buyables." },
-            done() { return player.f.total.gte(3e6) }
+            done() { return player.f.total.gte(3e3) }
         },
         6: {
             requirementDescription() { return format(1e11) + " total fatality" },
@@ -12922,7 +12922,7 @@ addLayer("f", {
             cost: new Decimal(25),
             effect() {
                 let eff = player.d.points.add(10).max(10)
-                eff = eff.log10().pow(0.2)
+                eff = eff.log10().pow(0.2).mul(1e20)
                 return eff
             },
             effectDisplay() {
@@ -12961,7 +12961,7 @@ addLayer("f", {
             cost: new Decimal(500),
             effect() {
                 let eff = player.points.add(10).max(10)
-                eff = eff.log10().pow(0.075)
+                eff = eff.log10().pow(0.075).mul(1e20)
                 if (hasFUpg(143)) eff = eff.tetrate(getFUpgEff(143))
                 if (eff.gte(Decimal.pow(10,1e8))) eff = Decimal.pow(10,eff.div(Decimal.pow(10,1e8)).log10().pow(0.8)).mul(Decimal.pow(10,1e8))
                 if (eff.gte("ee9")) eff = eff.log10().mul(10).pow(1e8)
@@ -13015,7 +13015,7 @@ addLayer("f", {
             description: "Severity boosts fatality gain.",
             cost: new Decimal(8000),
             effect() {
-                let eff = player.s.severity.add(10).max(10)
+                let eff = player.s.severity.add(10).max(10).mul(1e20)
                 eff = eff.pow("3e-7")
                 if (eff.gte(1e30)) eff = Decimal.pow(10,eff.div(1e30).log10().pow(0.4)).mul(1e30)
                 if (eff.gte("e40000")) eff = Decimal.pow(10,eff.div("e40000").log10().pow(0.8)).mul("e40000")
@@ -13036,7 +13036,7 @@ addLayer("f", {
             description: "Fatality boosts death gain.",
             cost: new Decimal(30000),
             effect() {
-                let eff = player.f.points.add(1).max(1)
+                let eff = player.f.points.add(1).max(1).mul(1e40)
                 eff = Decimal.pow(10,eff.log10().pow(1.75)).pow(15)
                 return eff
             },
@@ -13153,7 +13153,7 @@ addLayer("f", {
             cost: new Decimal(4e16),
             effect() {
                 let eff = player.d.points.add(10).max(10)
-                eff = eff.log10().pow(0.13)
+                eff = eff.log10().pow(0.13).mul(1e20)
                 return eff
             },
             effectDisplay() {
