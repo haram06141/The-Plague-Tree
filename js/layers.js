@@ -2776,7 +2776,7 @@ addLayer("s", {
                 let s32 = player.r.points
                 s32 = Decimal.pow(1.02, s32)
                 if (inChallenge("s", 21)) s32 = decimalOne
-                return s32
+                return s32.mul(1e43)
             },
             effectDisplay(){
                 return format(getSUpgEff(32))+"x"
@@ -3300,7 +3300,7 @@ addLayer("d", {
         return shown && player.uv.tree == "normal"
     },
     effect() {
-        let eff = player.d.best.add(1).max(1)
+        let eff = player.d.best.add(1e40).max(1)
         eff = eff.pow(5)
         if (eff.gte(Decimal.pow(10,Decimal.pow(10,1000)))) eff = eff.log10().pow(Decimal.pow(10,997))
         return eff
