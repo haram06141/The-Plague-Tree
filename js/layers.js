@@ -23903,7 +23903,7 @@ addLayer("e", {
             cost: new Decimal(1e103),
             effect(){
                 let eff = player.e.i.pow(-1).mul(1e3).add(10).max(10).log10().add(10).max(10).log10().pow(1.2)
-                return eff
+                return eff.mul(1e40)
             },
             effect2(){
                 let eff = player.e.i.pow(-1).mul(1e3).add(10).max(10).log10().add(10).max(10).log10().pow(0.05)
@@ -23985,7 +23985,7 @@ addLayer("e", {
                 if (exp.gte(120)) exp = exp.div(120).pow(0.5).mul(120)
                 if (exp.gte(11111)) exp = exp.div(11111).pow(0.3).mul(11111)
                 let eff = Decimal.pow(1.075,exp)
-                return eff
+                return eff.mul(1e40)
             },
             effectDisplay(){
                 let dis = format(upgradeEffect("e",235))+"x"
