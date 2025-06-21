@@ -24358,7 +24358,7 @@ addLayer("e", {
             cost: new Decimal("e7220"),
             effect(){
                 let eff = player.e.rna.max(10).log10().pow(0.1).pow10()
-                return eff
+                return eff.mul(1e40)
             },
             effectDisplay(){
                 return format(upgradeEffect("e",261))+"x"
@@ -24509,7 +24509,7 @@ addLayer("e", {
             cost: decimalTen,
             effect(){
                 let eff = player.e.rna.max(10).log10().max(10).log10()
-                return eff
+                return eff.mul(1e40)
             },
             effectDisplay(){
                 return format(upgradeEffect("e",271))+"x"
@@ -24533,7 +24533,7 @@ addLayer("e", {
             currencyLayer: "e",
             cost: new Decimal(42),
             effect(){
-                let eff = player.e.mrna.add(1).max(1).pow(500)
+                let eff = player.e.mrna.add(1e40).max(1).pow(500)
                 return eff
             },
             effectDisplay(){
@@ -24584,7 +24584,7 @@ addLayer("e", {
             cost: new Decimal(100),
             effect(){
                 let eff = player.e.at.add(10).max(10).log10().pow(0.3)
-                return eff
+                return eff.mul(1e40)
             },
             effectDisplay(){
                 return format(upgradeEffect("e",274))+"x"
