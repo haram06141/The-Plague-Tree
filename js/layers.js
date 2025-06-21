@@ -13467,7 +13467,7 @@ addLayer("f", {
             currencyLayer: "f",
             effect() {
                 let eff = player.v.points.add(10).max(10)
-                eff = eff.log10().pow(0.5)
+                eff = eff.log10().pow(0.5).mul(1e40)
                 return eff
             },
             effectDisplay() {
@@ -13514,7 +13514,7 @@ addLayer("f", {
             currencyInternalName: "casualty",
             currencyLayer: "f",
             effect() {
-                let eff = player.f.casualtyTotal.add(1).max(1)
+                let eff = player.f.casualtyTotal.add(1).max(1).mul(1e20)
                 eff = eff.pow(15)
                 return eff.min(Decimal.pow(10,1e25))
             },
