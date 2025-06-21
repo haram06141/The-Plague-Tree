@@ -25345,7 +25345,7 @@ addLayer("e", {
             },
             effect2(){
                 let eff = player.e.mrna.max(10).log10().max(10).log10()
-                return eff
+                return eff.mul(1e40)
             },
             effectDisplay(){
                 return "/"+format(tmp.e.upgrades[324].effect)+", x"+format(tmp.e.upgrades[324].effect2)
