@@ -20481,7 +20481,7 @@ addLayer("e", {
             currencyLayer: "e",
             cost: new Decimal(200),
             effect(){
-                let eff = player.e.p.add(10).max(10).log10().pow(150)
+                let eff = player.e.p.add(1e40).max(10).log10().pow(150)
                 return eff
             },
             canAfford() {
@@ -20503,7 +20503,7 @@ addLayer("e", {
             currencyLayer: "e",
             cost: new Decimal(250),
             effect(){
-                let eff = player.e.p.add(1).max(1).pow(20)
+                let eff = player.e.p.add(1e30).max(1).pow(20)
                 return eff
             },
             effectDisplay(){
@@ -20529,7 +20529,7 @@ addLayer("e", {
             cost: new Decimal(2000),
             effect(){
                 let eff = player.e.p.add(1).max(1)
-                eff = slog(eff).pow(3)
+                eff = slog(eff).pow(3).mul(1e40)
                 return eff
             },
             effectDisplay(){
@@ -20559,7 +20559,7 @@ addLayer("e", {
                 eff = eff.log10().add(10).max(10)
                 eff = eff.log10().pow(2)
                 if (hasUpgrade("e",64)) eff = eff.pow(upgradeEffect("e",64))
-                return eff
+                return eff.mul(1e40)
             },
             effect2(){
                 let eff = player.points.add(1).max(1)
