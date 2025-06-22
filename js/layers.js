@@ -30844,7 +30844,7 @@ addLayer("ct", {
                 if (hasUpgrade("ct",196)) exp = exp.add(2)
                 let Nayeon = powExp(player.ct.Avaccines.max(10).log10().mul(10),exp).div(10)
                 if (hasUpgrade("ct",202)) Nayeon = slogadd(Nayeon,0.2).pow(0.1)
-                return Nayeon
+                return Nayeon.mul(1e40)
             },
             effectDisplay(){
                 return format(upgradeEffect("ct",171))+"x"
