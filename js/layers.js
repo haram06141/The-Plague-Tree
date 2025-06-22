@@ -39372,7 +39372,7 @@ addLayer("ct", {
                 return cost.floor()
             },
             base() { 
-                let base = new Decimal(0.2)
+                let base = new Decimal(0.4)
                 if (hasUpgrade("ct",102)) base = base.add(0.1)
                 if (hasUpgrade("ct",61)) base = base.add(upgradeEffect("ct",61))
                 return base
@@ -39628,7 +39628,7 @@ addLayer("ct", {
                     if (hasMilestone("ct",20)) base = base.mul(milestoneEffect("ct",20))
                     base = base.mul(tmp.ct.buyables[63].effect2).mul(tmp.ct.buyables[71].effect).mul(tmp.ct.buyables[81].effect)
                 }
-                return base
+                return base.mul(1e40)
             },
             exp() {
                 let exp = new Decimal(0.05)
