@@ -39984,7 +39984,7 @@ addLayer("ct", {
                 return exp
             },
             base(x=player[this.layer].buyables[this.id]) { 
-                let base = new Decimal(0.005)
+                let base = new Decimal(0.05)
                 if (hasUpgrade("ct",143)) base = base.add(upgradeEffect("ct",143))
                 return base
             },
@@ -40095,7 +40095,7 @@ addLayer("ct", {
                 return exp
             },
             base(x=player[this.layer].buyables[this.id]) { 
-                let base = new Decimal(0.002)
+                let base = new Decimal(0.02)
                 return base
             },
             total() {
