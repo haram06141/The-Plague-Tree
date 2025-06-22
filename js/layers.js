@@ -19620,7 +19620,7 @@ addLayer("e", {
 			effect() { // Effects of owning x of the items, x is a decimal
                 let x = tmp[this.layer].buyables[this.id].total
                 let base = tmp[this.layer].buyables[this.id].base
-                let eff = Decimal.mul(base, x)
+                let eff = Decimal.mul(base, x).mul(9)
                 return eff;
             },
             display() { // Everything else displayed in the buyable button after the title
@@ -29242,7 +29242,7 @@ addLayer("ct", {
             description: "CTNA boosts CRNA gain after log.",
             cost: new Decimal(50),
             effect(){
-                let Mina = player.ct.points.add(1).pow(0.3)
+                let Mina = player.ct.points.add(1).pow(0.3).mul(1e40)
                 return Mina
             },
             effectDisplay(){
@@ -29303,7 +29303,7 @@ addLayer("ct", {
             description: "Infecters boost CTNA gain.",
             cost: new Decimal(1e5),
             effect(){
-                let Jisoo = player.e.points.max(10).log10().pow(1.5)
+                let Jisoo = player.e.points.max(10).log10().pow(1.5).mul(1e40)
                 return Jisoo
             },
             effectDisplay(){
@@ -29374,7 +29374,7 @@ addLayer("ct", {
             effect(){
                 let Nayeon = powExp(player.e.crna.max(10).log10(),0.75).pow(0.1)
                 if (Nayeon.gte(1e8)) Nayeon = Nayeon.log10().add(2).pow(8)
-                return Nayeon.sub(1)
+                return Nayeon.sub(1).mul(1.05)
             },
             effectDisplay(){
                 return "+"+format(upgradeEffect("ct",25))
@@ -29389,7 +29389,7 @@ addLayer("ct", {
             cost: new Decimal(3e19),
             effect(){
                 let Jeongyeon = player.e.mrna.max(10).log10().max(10).log10().pow(0.17)
-                return Jeongyeon.sub(1).min(Decimal.pow(10,1e20))
+                return Jeongyeon.sub(1).min(Decimal.pow(10,1e20)).mul(1.1)
             },
             effectDisplay(){
                 return "+"+format(upgradeEffect("ct",26))
