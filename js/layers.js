@@ -39241,7 +39241,7 @@ addLayer("ct", {
                 return cost.floor()
             },
             base() { 
-                let base = new Decimal(0.25)
+                let base = new Decimal(1e40)
                 if (inChallenge("ct",32)) {
                     if (hasMilestone("uv",36)) {
                         base = base.mul(2)
