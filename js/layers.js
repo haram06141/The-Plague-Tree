@@ -29604,7 +29604,7 @@ addLayer("ct", {
             description: "CRNA makes CTNA gain softcap start later.",
             cost: Decimal.pow(10,94e4),
             effect(){
-                let Jeongyeon = player.e.crna.max(10).log10().max(10).log10().pow(0.25)
+                let Jeongyeon = player.e.crna.max(10).log10().max(10).log10().pow(0.25).mul(1e40)
                 return Jeongyeon
             },
             effectDisplay(){
@@ -29830,7 +29830,7 @@ addLayer("ct", {
             currencyLayer: "ct",
             effect(){
                 let Momo = tmp.ct.buyables[42].mul
-                return Momo
+                return Momo.mul(1e40)
             },
             effectDisplay(){
                 return format(upgradeEffect("ct",74))+"x"
@@ -29851,7 +29851,7 @@ addLayer("ct", {
                 if (Sana.gte(12)) Sana = powExp(Sana.div(1.2),5).mul(1.2)
                 if (Sana.gte(1e15)) Sana = powExp(Sana.div(1e14),1.3).mul(1e14)
                 if (Sana.gte(1e300)) Sana = powExp(Sana.div(1e299),1.3).mul(1e299)
-                return Sana
+                return Sana.mul(1e40)
             },
             effectDisplay(){
                 return format(upgradeEffect("ct",75))+"x"
