@@ -38583,7 +38583,7 @@ addLayer("ct", {
                 return cost.floor()
             },
             base() { 
-                let base = new Decimal(0.03)
+                let base = new Decimal(0.15)
                 return base.add(tmp.ct.buyables[22].effect2)
             },
             total() {
@@ -38639,7 +38639,7 @@ addLayer("ct", {
                 return cost.floor()
             },
             base() { 
-                let base = new Decimal(0.04)
+                let base = new Decimal(0.2)
                 return base.add(tmp.ct.buyables[23].effect2)
             },
             total() {
@@ -38711,7 +38711,7 @@ addLayer("ct", {
                 return base
             },
             base2() { 
-                let base = new Decimal(0.005)
+                let base = new Decimal(0.05)
                 return base
             },
             exp() { 
@@ -38827,7 +38827,7 @@ addLayer("ct", {
                 return base
             },
             base2() { 
-                let base = new Decimal(5e-4)
+                let base = new Decimal(5e-3)
                 return base
             },
             exp() { 
