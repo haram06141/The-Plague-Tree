@@ -41175,7 +41175,7 @@ addLayer("ct", {
                 return cost.floor()
             },
             base(x=player[this.layer].buyables[this.id]) { 
-                let base = player.ct.Avaccines.max(10).log10().max(10).log10().pow(0.9).sub(1).div(100)
+                let base = player.ct.Avaccines.max(10).log10().max(10).log10().pow(0.9).sub(1).div(15)
                 return base
             },
             base2(x=player[this.layer].buyables[this.id]) { 
