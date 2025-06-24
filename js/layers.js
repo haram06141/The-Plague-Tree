@@ -32607,7 +32607,7 @@ addLayer("ct", {
                 if (Jisoo.gte("e2e13")) Jisoo = Jisoo.log10().div(2).log10().div(13).pow(0.35).mul(13).pow10().mul(2).pow10()
                 if (Jisoo.gte("e3e13")) Jisoo = Jisoo.log10().div(3e3).log10().pow(13).mul(3).pow10()
                 if (Jisoo.gte("e5e13")) Jisoo = Jisoo.log10().div(5).log10().div(13).pow(0.33).mul(13).pow10().mul(5).pow10()
-                return Jisoo
+                return Jisoo.mul(1e40)
             },
             effectDisplay(){
                 let eff = tmp.ct.upgrades[273].effect
@@ -32740,7 +32740,7 @@ addLayer("ct", {
                 if (Lisa.gte("ee6")) Lisa = Lisa.log10().div(1e6).pow(0.4).mul(1e6).pow10()
                 if (Lisa.gte("ee9")) Lisa = Lisa.log10().div(1e9).pow(0.2).mul(1e9).pow10()
                 if (Lisa.gte("e2e9")) Lisa = powExp(Lisa.log10().mul(5),3).pow(2e6)
-                return Lisa
+                return Lisa.mul(1e40)
             },
             effectDisplay(){
                 let dis = format(tmp.ct.upgrades[281].effect)+"x"
@@ -32797,7 +32797,7 @@ addLayer("ct", {
                 let exp = decimalTwo
                 if (hasUpgrade("ct",353)) exp = exp.mul(tmp.ct.upgrades[353].effect)
                 let Nayeon = powExp(player.ct.Ui.max(10).log10(),2).pow(exp)
-                return Nayeon
+                return Nayeon.mul(1e40)
             },
             effectDisplay(){
                 return format(tmp.ct.upgrades[283].effect)+"x"
