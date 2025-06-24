@@ -31845,7 +31845,7 @@ addLayer("ct", {
                 if (hasUpgrade("ct",236)) add = add.add(.5)
                 let Jisoo = slogadd(player.ct.SideEff.max(10),add).pow(0.75)
                 if (Jisoo.gte("eee15")) Jisoo = Jisoo.log10().log10().div(1e15).pow(0.2).mul(1e15).pow10().pow10()
-                return Jisoo
+                return Jisoo.mul(1e40)
             },
             effectDisplay(){
                 return format(tmp.ct.upgrades[231].effect)+"x"
@@ -31874,7 +31874,7 @@ addLayer("ct", {
                 let Jennie = slogadd(player.ct.AdEff.max(10),-.5)
                 if (hasUpgrade("ct",241)) Jennie = slogadd(Jennie,.25)
                 if (hasUpgrade("ct",243)) Jennie = slogadd(Jennie,.175)
-                return Jennie
+                return Jennie.mul(1e40)
             },
             effectDisplay(){
                 return format(tmp.ct.upgrades[232].effect)+"x"
@@ -31901,7 +31901,7 @@ addLayer("ct", {
             currencyLayer: "ct",
             effect(){
                 let Rosé = player.ct.AdEff.add(1).pow(0.7)
-                return Rosé
+                return Rosé.mul(1e40)
             },
             effectDisplay(){
                 return format(tmp.ct.upgrades[233].effect)+"x"
