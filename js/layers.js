@@ -31633,7 +31633,7 @@ addLayer("ct", {
             currencyDisplayName: "Anti-Vaccines",
             currencyLayer: "ct",
             effect(){
-                let Sana = slogadd(tmp.ct.getAmps.max(10),-2.2)
+                let Sana = slogadd(tmp.ct.getAmps.max(10),-2.2).mul(1e40)
                 return Sana
             },
             effectDisplay(){
@@ -31660,7 +31660,7 @@ addLayer("ct", {
             currencyDisplayName: "Anti-Vaccines",
             currencyLayer: "ct",
             effect(){
-                let Jihyo = powExp(player.ct.Avaxxers,2).pow(0.2)
+                let Jihyo = powExp(player.ct.Avaxxers,2).pow(0.2).mul(1e40)
                 return Jihyo
             },
             effectDisplay(){
@@ -41243,9 +41243,9 @@ addLayer("ct", {
                 return cost.floor()
             },
             base(x=player[this.layer].buyables[this.id]) { 
-                let base = new Decimal(0.1)
-                if (hasUpgrade("ct",215)) base = base.add(0.1)
-                if (hasUpgrade("ct",223)) base = base.add(0.1)
+                let base = new Decimal(0.3)
+                if (hasUpgrade("ct",215)) base = base.add(0.3)
+                if (hasUpgrade("ct",223)) base = base.add(0.3)
                 if (hasUpgrade("ct",224)) base = base.add(tmp.ct.upgrades[224].effect)
                 return base
             },
