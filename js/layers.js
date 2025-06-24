@@ -32171,7 +32171,7 @@ addLayer("ct", {
                 if (Tzuyu.gte(Decimal.pow(10,25000)) && hasUpgrade("ct",291)) Tzuyu = Tzuyu.log10().div(25000).pow(8).mul(25000).pow10()
                 if (Tzuyu.gte(Decimal.pow(10,1e8))) Tzuyu = Tzuyu.log10().div(1e8).pow(0.2).mul(1e8).pow10()
                 if (Tzuyu.gte(Decimal.pow(10,1e12))) Tzuyu = Tzuyu.log10().log10().div(12).pow(0.3).mul(12).pow10().pow10()
-                return Tzuyu
+                return Tzuyu.mul(1e20)
             },
             effectDisplay(){
                 return format(tmp.ct.upgrades[246].effect)+"x"
