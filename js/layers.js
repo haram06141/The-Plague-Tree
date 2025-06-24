@@ -32796,8 +32796,8 @@ addLayer("ct", {
             effect(){
                 let exp = decimalTwo
                 if (hasUpgrade("ct",353)) exp = exp.mul(tmp.ct.upgrades[353].effect)
-                let Nayeon = powExp(player.ct.Ui.max(10).log10(),2).pow(exp)
-                return Nayeon.mul(1e40)
+                let Nayeon = powExp(player.ct.Ui.max(10).log10(),2).mul(1e40).pow(exp)
+                return Nayeon
             },
             effectDisplay(){
                 return format(tmp.ct.upgrades[283].effect)+"x"
@@ -33606,8 +33606,8 @@ addLayer("ct", {
             currencyDisplayName: "Adverse Vaxxers",
             currencyLayer: "ct",
             effect(){
-                let Jennie = player.ct.Advaxxers.add(2).mul(3).pow(1.5)
-                return Jennie
+                let Jennie = player.ct.Advaxxers.add(1e40).mul(3).pow(1.5)
+                return Jennie.mul(1e40)
             },
             effectDisplay(){
                 return format(tmp.ct.upgrades[344].effect)+"x"
