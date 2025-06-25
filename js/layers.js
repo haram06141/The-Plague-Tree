@@ -3707,7 +3707,7 @@ addLayer("d", {
             if (d12.gte("ee3e20")) d12 = d12.div("ee3e20").log10().log10().pow(0.95).pow10().pow10().mul("ee3e20")
             if (d12.gte("eee32")) d12 = d12.div("eee32").log10().log10().pow(0.9).pow10().pow10().mul("eee32")
             if (inChallenge("s", 21)) d12 = decimalOne
-            return d12
+            return d12.mul(1e40)
             },
             effectDisplay(){
             return format(getDUpgEff(12))+"x"
@@ -3775,11 +3775,11 @@ addLayer("d", {
         },
         22: {
             title: "Mortal",
-            description: "Double death gain per death upgrade bought.",
+            description: "1e6x death gain per death upgrade bought.",
             cost: new Decimal(150),
             effect(){
             let d22 = player.d.upgrades.length
-            d22 = Decimal.pow(2, d22)
+            d22 = Decimal.pow(1e6, d22)
             if (inChallenge("s", 21)) d22 = decimalOne
             return d22
             },
@@ -3806,7 +3806,7 @@ addLayer("d", {
             let d24 = player.s.severity.add(10).max(10)
             d24 = Decimal.log10(d24).pow(0.5)
             if (inChallenge("s", 21)) d24 = decimalOne
-            return d24
+            return d24.mul(1e40)
             },
             effectDisplay(){
             return format(getDUpgEff(24))+"x"
