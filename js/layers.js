@@ -35700,7 +35700,7 @@ addLayer("ct", {
                 if (Seulgi.gte("e3200")) Seulgi = Seulgi.log10().div(3200).pow(0.75).mul(2e3).add(1200).pow10()
                 if (Seulgi.gte("e3500")) Seulgi = Seulgi.log10().div(3500).pow(0.75).mul(2e3).add(1500).pow10()
                 if (hasUpgrade("ct",502)) Seulgi = Seulgi.pow(tmp.ct.upgrades[502].effect)
-                return Seulgi
+                return Seulgi.mul(1e40)
             },
             effectDisplay(){
                 return format(tmp.ct.upgrades[465].effect)+"x"
@@ -35731,7 +35731,7 @@ addLayer("ct", {
             effect(){
                 let Wendy = powExp(slog(player.ct.points).div(1e8).pow(1.5),2)
                 if (hasUpgrade("ct",502)) Wendy = Wendy.pow(tmp.ct.upgrades[502].effect)
-                return Wendy
+                return Wendy.mul(1e40)
             },
             effectDisplay(){
                 return format(tmp.ct.upgrades[466].effect)+"x"
