@@ -35182,7 +35182,7 @@ addLayer("ct", {
             cost: Decimal.pow(10,Math.E*1e9),
             currencyDisplayName: "cases in 'Booster Vaccine'",
             effect(){
-                let Karina = tmp.ct.getBest.max(10).log10().pow(0.1)
+                let Karina = tmp.ct.getBest.max(10).log10().pow(4.4)
                 return Karina
             },
             effectDisplay(){
@@ -46433,7 +46433,7 @@ addLayer("Ur", {
         6: {
             requirementDescription: "200 unvaxxed replicators (7)",
             effect() {
-                let eff = tmp.Ur.buyables[21].effect.pow(0.1)
+                let eff = tmp.Ur.buyables[21].effect.pow(0.1).mul(1e40)
                 return eff
             },
             effectDescription() {
@@ -46461,7 +46461,7 @@ addLayer("Ur", {
             requirementDescription: "330 unvaxxed replicators (10)",
             effect() {
                 let eff = Decimal.pow(1.01,player.Ur.points.sub(300).max(0))
-                return eff
+                return eff.mul(1e40)
             },
             effectDescription() {
                 return "Unvaxxed replicators divide replicant interval.<br>Currently: /"+format(milestoneEffect("Ur",9))}
