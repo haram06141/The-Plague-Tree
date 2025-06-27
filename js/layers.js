@@ -47616,7 +47616,7 @@ addLayer("Up", {
             },
             rewardDescription: "Replicant interval is faster based on Prion time.",
             rewardEffect() {
-                let eff = new Decimal(player.Up.time/10).add(1).pow(2.5)
+                let eff = new Decimal(player.Up.time/10).add(1).pow(25)
                 return eff
             },
             rewardDisplay() {
@@ -47645,7 +47645,7 @@ addLayer("Up", {
             },
             rewardDescription: "Deaths divide replicant interval.",
             rewardEffect() {
-                let eff = player.d.points.max(10).log10().div(1e3).max(1).pow(3)
+                let eff = player.d.points.max(10).log10().div(1e3).max(1).pow(12)
                 return eff
             },
             rewardDisplay() {
@@ -47701,7 +47701,7 @@ addLayer("Up", {
             },
             rewardDescription: "Multiply unvaxxed prion gain based on Prion time.",
             rewardEffect() {
-                let eff = new Decimal(player.Up.time).add(10).log10().pow(5)
+                let eff = new Decimal(player.Up.time).add(10).log10().pow(100)
                 return eff
             },
             rewardDisplay() {
@@ -47995,7 +47995,7 @@ addLayer("Up", {
                 if (eff.gte("ee19")) eff = eff.log10().div(1e19).pow(0.35).mul(1e19).pow10()
                 if (eff.gte("e5e19")) eff = eff.log10().div(5e19).pow(0.35).mul(5e19).pow10()
                 if (eff.gte("ee24")) eff = eff.log10().log10().div(2.4).pow(24).pow10()
-                return eff
+                return eff.mul(1e40)
             },
             effectDisplay(){
                 let dis = format(tmp.Up.upgrades[23].effect)+"x"
@@ -48035,11 +48035,11 @@ addLayer("Up", {
             cost: new Decimal(1e45),
             description: "Fatality and unvaxxed prions boost each other.",
             effect(){
-                let eff = player.Up.points.add(1).pow(0.02)
+                let eff = player.Up.points.add(1).pow(0.16)
                 return eff
             },
             effect2(){
-                let eff = player.f.points.add(1).pow(0.5)
+                let eff = player.f.points.add(1).pow(2.5)
                 if (hasUpgrade("Up",41)) eff = eff.pow(2)
                 if (hasUpgrade("Up",43)) eff = eff.pow(1.5)
                 if (hasMilestone("Up",14)) eff = eff.pow(1.5)
