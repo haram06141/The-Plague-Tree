@@ -54063,7 +54063,7 @@ addLayer("Us", {
                     if (eff.gte(1e250)) eff = powExp(eff.log10().mul(4),2).pow(250/9)
                     if (eff.gte("e1500")) eff = eff.log10().div(1500).pow(0.6).mul(1500).pow10()
                 }
-                return eff
+                return eff.pow(11.5)
             },
             effectDisplay(){
                 let dis = format(tmp.Us.upgrades[12].effect)+"x"
