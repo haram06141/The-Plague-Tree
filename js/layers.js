@@ -6044,7 +6044,7 @@ addLayer("uv", {
         let dil = tmp.uv.virusEffDil
         let eff = player.uv.virus.max(player.uv.virusBest.div(3))
         eff = eff.add(1).mul(10).log10().pow(dil).sub(1).mul(exp).pow10()
-        return eff
+        return eff.mul(1e40)
     },
     microtabs: {
         upg: {
