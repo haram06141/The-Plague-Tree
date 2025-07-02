@@ -31277,8 +31277,10 @@ addLayer("ct", {
                 let effslog = Sana.add(plus.mul(mult))
                 if (effslog.gte(1e55)) effslog = effslog.log10().div(55).pow(0.5).mul(55).pow10().mul(2).sub(1e55)
                 if (effslog.gte(1e101)) effslog = effslog.div(1e100).pow(0.01).log10().pow(0.5).pow10().mul(1e100)
+                if (effslog.gte(1e151)) effslog = effslog.div(1e150).log10().mul(1e151)
                 if (effslog.gte(1e279)) effslog = effslog.div(1e278).pow(0.01).log10().pow(0.25).pow10().mul(1e278)
-                Sana = tet10(effslog.min(1.797693e308))
+                if (effslog.gte(1e300)) effslog = effslog.div(1e299).log10().mul(1e300)
+                Sana = tet10(effslog.min(1e303))
                 if (inChallenge("ct",12)) Sana = decimalOne
                 return Sana
             },
