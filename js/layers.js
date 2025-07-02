@@ -6802,12 +6802,12 @@ addLayer("uv", {
         },
         31: { // Somi, Chungha
             title: "Time Booster",
-            description: "Multiply Time speed by 1.2 per Unvaxxed Layer.",
+            description: "Multiply Time speed by 100 and 2 per Unvaxxed Layer.",
             cost: new Decimal("eee982900"),
             currencyDisplayName: "cases in 'Booster Vaccine'",
             effect(){
-                let Somi = Decimal.pow(1.2,tmp.uv.effLayers)
-                return Somi
+                let Somi = Decimal.pow(2,tmp.uv.effLayers)
+                return Somi.mul(100)
             },
             effectDisplay(){
                 return format(tmp.uv.upgrades[31].effect)+'x'
@@ -7056,7 +7056,7 @@ addLayer("uv", {
             effect(){
                 let eff = player.uv.virus.div(1e7).pow(0.5).add(1).mul(10)
                 if (eff.gte(1e7)) eff = eff.div(1e7).pow(2).mul(1e7)
-                return eff
+                return eff.mul(1e40)
             },
             effectDisplay(){
                 return format(tmp.uv.upgrades[66].effect)+'x'
@@ -35456,7 +35456,7 @@ addLayer("ct", {
                 let Giselle = tmp.ct.getBest.max(10).log10().div(1e50).max(1).pow(0.2)
                 if (hasUpgrade("ct",455)) Giselle = powExp(Giselle,2)
                 if (hasUpgrade("ct",641)) Giselle = powExp(Giselle,1.25)
-                return Giselle
+                return Giselle.mul(1e30)
             },
             effectDisplay(){
                 return format(tmp.ct.upgrades[452].effect)+"x"
@@ -35488,7 +35488,7 @@ addLayer("ct", {
             effect(){
                 let Winter = powExp(tmp.ct.getBest.max(10).log10(),0.8).div(1e24).max(1).pow(0.3)
                 if (hasUpgrade("ct",455) && Winter.gte(200)) Winter = Winter.div(200).pow(5).mul(200)
-                return Winter
+                return Winter.mul(1e10)
             },
             effectDisplay(){
                 return format(tmp.ct.upgrades[453].effect)+"x"
@@ -43712,7 +43712,7 @@ addLayer("ct", {
             base() { 
                 let base = player.ct.aBoost.max(10).log10().max(10).log10().pow(2).sub(1).div(5e3)
                 if (base.gte(0.06)) base = base.div(0.06).pow(0.5).mul(0.04).add(0.02)
-                return base
+                return base.max(base.pow(0.5))
             },
             effect() { // Effects of owning x of the items, x is a decimal
                 let x = player.ct.buyables[283]
