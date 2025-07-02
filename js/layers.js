@@ -5984,6 +5984,8 @@ addLayer("uv", {
         let x = player.uv.points.add(tmp.uv.buyables[103].effect)
         if (hasUpgrade("uv",22)) x = x.add(upgradeEffect("uv",22))
         if (hasUpgrade("uv",23)) x = x.add(upgradeEffect("uv",23))
+        if (x.gte(30)) x = x.div(30).pow(0.4).mul(30)
+        if (x.gte(100)) x = x.div(100).pow(0.16).mul(100)
         return x
     },
     slogCap () {
@@ -27993,7 +27995,8 @@ addLayer("ct", {
         if (hasMilestone("uv",46)) eff = eff.mul(3.54)
         if (hasAchievement("a",271)) eff = eff.mul(6)
         if (hasAchievement("a",282)) eff = eff.mul(tmp.a.achievements[282].effect)
-        if (eff.gte("1e100000")) eff = eff.div("1e99900").pow(0.01).log10().pow(0.5).pow10().mul("1e99999")
+        if (eff.gte("1e1000")) eff = eff.div("1e900").pow(0.01).log10().pow(0.5).pow10().mul("1e999")
+        if (eff.gte("1e100000")) eff = eff.div("1e99900").pow(0.01).log10().pow(0.25).pow10().mul("1e99999")
         return eff
     },
     update(diff) {
@@ -43720,6 +43723,9 @@ addLayer("ct", {
             effect() { // Effects of owning x of the items, x is a decimal
                 let x = player.ct.buyables[283]
                 let base = tmp[this.layer].buyables[this.id].base
+                if (base.gte(10)) base = base.div(10).pow(0.5).mul(10)
+                if (base.gte(100)) base = base.div(100).pow(0.35).mul(100)
+                if (base.gte(200)) base = base.div(200).pow(0.25).mul(200)
                 return Decimal.mul(base, x);
             },
             display() { // Everything else displayed in the buyable button after the title
