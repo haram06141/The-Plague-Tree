@@ -27993,6 +27993,7 @@ addLayer("ct", {
         if (hasMilestone("uv",46)) eff = eff.mul(3.54)
         if (hasAchievement("a",271)) eff = eff.mul(6)
         if (hasAchievement("a",282)) eff = eff.mul(tmp.a.achievements[282].effect)
+        if (eff.gte("1e100000")) eff = eff.div("1e99900").pow(0.01).log10().pow(0.5).pow10().mul("1e99999")
         return eff
     },
     update(diff) {
@@ -31272,6 +31273,8 @@ addLayer("ct", {
                 if (hasUpgrade("ct",226)) mult = mult.mul(1.005)
                 let effslog = Sana.add(plus.mul(mult))
                 if (effslog.gte(1e55)) effslog = effslog.log10().div(55).pow(0.5).mul(55).pow10().mul(2).sub(1e55)
+                if (effslog.gte(1e101)) effslog = effslog.div(1e100).pow(0.01).log10().pow(0.5).pow10().mul(1e100)
+                if (effslog.gte(1e279)) effslog = effslog.div(1e278).pow(0.01).log10().pow(0.25).pow10().mul(1e278)
                 Sana = tet10(effslog.min(1.797693e308))
                 if (inChallenge("ct",12)) Sana = decimalOne
                 return Sana
