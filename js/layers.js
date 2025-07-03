@@ -27836,6 +27836,7 @@ addLayer("ct", {
         if (hasUpgrade("ct",542)) eff = powSlogExp(eff,1.01)
         if (hasUpgrade("ct",551)) eff = mulSlog(eff,tmp.ct.upgrades[551].effect)
         if (player.ct.inC) eff = decimalOne
+        if (inChallenge("ct",32)) eff = slog(eff.add(10))
         return eff
     },
     getLaGain() { 
@@ -27996,6 +27997,7 @@ addLayer("ct", {
         if (hasAchievement("a",271)) eff = eff.mul(6)
         if (hasAchievement("a",282)) eff = eff.mul(tmp.a.achievements[282].effect)
         if (eff.gte("1e1000")) eff = eff.div("1e900").pow(0.01).log10().pow(0.5).pow10().mul("1e999")
+        if (eff.gte("1e2000")) eff = eff.div("1e1999").log10().mul("1e1999")
         if (eff.gte("1e100000")) eff = eff.div("1e99900").pow(0.01).log10().pow(0.25).pow10().mul("1e99999")
         return eff
     },
@@ -39834,7 +39836,7 @@ addLayer("ct", {
                 if (x.gte(slogadd(1e30,2))) x = x.log10().root(3.33333e28).pow10().pow10()
                 if (x.gte(Decimal.pow(10,Decimal.pow(10,1e5)))) x = Decimal.pow(1.0001,x.log10().log10().sub(1e5)).mul(1e5).pow10().pow10()
                 if (x.gte(Decimal.pow(10,1e9))) x = Decimal.pow(1.02,x.log10().div(1e7).sub(100)).mul(1e9).pow10()
-                let c = inChallenge("ct",32)?"e1000":1e58
+                let c = inChallenge("ct",32)?"e10000":1e58
                 let cost = Decimal.pow(10,x.pow(1.25)).mul(c)
                 return cost.floor()
             },
@@ -43541,6 +43543,7 @@ addLayer("ct", {
                 let base = tmp.ct.buyables[281].costb
                 let exp = tmp.ct.buyables[281].coste
                 let x = player.ct.buyables[281]
+                if (x.gte(2000)) x = x.mul(4).sub(6000).div(2000).pow(7).mul(2000)
                 if (x.gte(100)) x = x.mul(1.3).sub(30).div(100).pow(1.3).mul(100)
                 if (x.gte(98)) x = x.add(1)
                 if (x.gte(85)) x = x.mul(1.3).sub(25.5).div(85).pow(1.3).mul(85)
@@ -43622,6 +43625,7 @@ addLayer("ct", {
                 let base = tmp.ct.buyables[282].costb
                 let exp = tmp.ct.buyables[282].coste
                 let x = player.ct.buyables[282]
+                if (x.gte(1400)) x = x.mul(2.5).sub(2100).div(1400).pow(1.75).mul(1400)
                 if (x.gte(280)) x = x.mul(1.3).sub(84).div(280).pow(1.15).mul(280)
                 if (x.gte(100)) x = x.mul(1.3).sub(30).div(100).pow(1.3).mul(100)
                 if (x.gte(96)) x = x.add(1)
@@ -43702,6 +43706,7 @@ addLayer("ct", {
                 let base = tmp.ct.buyables[283].costb
                 let exp = tmp.ct.buyables[283].coste
                 let x = player.ct.buyables[283]
+                if (x.gte(100)) x = pow(1.025,x.sub(100)).mul(100)
                 if (x.gte(79)) x = x.div(79).pow(1.6).mul(100).sub(21)
                 if (x.gte(39)) x = x.div(39).pow(1.6).mul(50).sub(11)
                 if (x.gte(30)) x = x.div(30).pow(1.5).mul(40).sub(10)
@@ -43817,7 +43822,9 @@ addLayer("ct", {
             effect() { // Effects of owning x of the items, x is a decimal
                 let exp = tmp.ct.buyables[291].exp
                 let base = tmp[this.layer].buyables[this.id].effectBase
-                return Decimal.pow(base, exp);
+                let eff = Decimal.pow(base, exp)
+                if (eff.gte(1e301)) eff = eff.div(1e300).log10().pow(0.5).mul(1e301)
+                return eff
             },
             display() { // Everything else displayed in the buyable button after the title
                 if (player.tab != "ct" || player.subtabs.ct.mainTabs != "AnTNA") return
